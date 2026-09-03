@@ -112,6 +112,7 @@
   };
 
   programs.steam.enable = true;
+  programs.nix-ld.enable = true;
   programs.firefox = {
     enable = true;
     
@@ -129,10 +130,14 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     helix
     wl-clipboard
